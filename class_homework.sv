@@ -7,38 +7,38 @@ module exchange_module;
    function get_Euro_from_Dollar(real amount);
       real euro;
       euro = Euro_Rate * amount;
-      $display("Dollar %f = Euro %f", amount, euro);
+      $display("Dollar : %f\nEuro : %f\n", amount, euro);
    endfunction
 
    function get_Dollar_from_Euro(real amount);
       real dollar;
       dollar = amount / Euro_Rate;
-    $display("Euro %f = Dollar %f", amount, dollar);
+      $display("Euro : %f\nDollar : %f\n", amount, dollar);
    endfunction
 
 
    function get_Won_from_Dollar(real amount);
       real won;
       won = amount * Won_Rate;
-    $display("Dollar %f = Won %f", amount, won);
+      $display("Dollar : %f\nWon : %f\n", amount, won);
    endfunction
 
    function get_Dollar_from_Won(real amount);
       real dollar;
       dollar = amount / Won_Rate;
-    $display("Won %f = Dollar %f", amount, dollar);
+      $display("Won : %f\nDollar : %f\n", amount, dollar);
    endfunction
 
    function get_Yen_from_Dollar(real amount);
       real yen;
       yen = amount * Yen_Rate;
-    $display("Dollar %f = Yen %f", amount, yen);
+      $display("Dollar : %f\nYen : %f\n", amount, yen);
    endfunction
 
    function get_Dollar_from_Yen(real amount);
       real dollar;
       dollar = amount / Yen_Rate;
-     $display("Yen %f = Dollar %f", amount, dollar);
+      $display("Yen : %f\nDollar : %f\n", amount, dollar);
    endfunction
 
 
