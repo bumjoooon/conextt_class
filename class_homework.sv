@@ -15,13 +15,13 @@ module exchange_module;
 
    function get_Won_from_Dollar(real amount);
       real won;
-      won = amount / 1335.9;
+      won = amount * 1335.9;
     $display("Dollar %f = Won %f", amount, won);
    endfunction
 
    function get_Dollar_from_Won(real amount);
       real dollar;
-      dollar = won * 1335.9;
+      dollar = amount / 1335.9;
     $display("Won %f = Dollar %f", amount, dollar);
    endfunction
 
@@ -34,7 +34,7 @@ module exchange_module;
    function get_Dollar_from_Yen(real amount);
       real dollar;
       dollar = amount * 148.29;
-    $display("Yen %f = Dollar %f", amount, yen);
+     $display("Yen %f = Dollar %f", amount, dollar);
    endfunction
 
 
@@ -44,7 +44,9 @@ module exchange_module;
       get_Euro_from_Dollar(100);
       get_Dollar_from_Euro(20);
       get_Yen_from_Dollar(150);
-      get_Dollar_from_won(5000);
+      get_Dollar_from_Won(5000);
    end
 
 endmodule
+
+
