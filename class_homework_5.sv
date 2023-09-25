@@ -4,12 +4,21 @@ module exchange_module;
    parameter real Won_Rate = 1335.9;
    parameter real Yen_Rate = 148.29;
 
-   class gEfD;
+   class gf;
       real amount;
-      
+
       function new (real amount);
          this.amount = amount;
       endfunction
+
+   endclass
+
+  
+   class gEfD extends gf;
+     
+     function new(real amount);
+       super.new(amount);
+     endfunction
 
       function get_Euro_from_Dollar();
          real euro;
@@ -20,12 +29,11 @@ module exchange_module;
    endclass
 
 
-   class gDfE;
-      real amount;
-      
-      function new (real amount);
-         this.amount = amount;
-      endfunction
+   class gDfE extends gf;
+
+     function new(real amount);
+       super.new(amount);
+     endfunction
 
      function get_Dollar_from_Euro();
          real dollar;
@@ -48,6 +56,7 @@ module exchange_module;
    end
 
 endmodule
+
 
 
 
