@@ -40,7 +40,6 @@ module exchange_module;
        super.new(amount); 
        super.AfterExchange( Euro_Rate);
        super.Name(get,from);
-       
        super.display();
      endfunction
 
@@ -57,7 +56,6 @@ module exchange_module;
        super.new(amount); 
        super.AfterExchange( (1/Euro_Rate));
        super.Name(get,from);
-       
        super.display();
      endfunction
    endclass
@@ -74,7 +72,6 @@ module exchange_module;
        super.new(amount); 
        super.AfterExchange( Won_Rate );
        super.Name(get,from);
-       
        super.display();
      endfunction
    endclass
@@ -90,7 +87,6 @@ module exchange_module;
        super.new(amount); 
        super.AfterExchange( 1/Won_Rate );
        super.Name(get,from);
-       
        super.display();
      endfunction
    endclass
@@ -106,7 +102,6 @@ module exchange_module;
        super.new(amount); 
        super.AfterExchange( Yen_Rate );
        super.Name(get,from);
-       
        super.display();
      endfunction
    endclass
@@ -122,13 +117,11 @@ module exchange_module;
        super.new(amount); 
        super.AfterExchange( 1/Yen_Rate );
        super.Name(get,from);
-       
        super.display();
      endfunction
    endclass
 
 
-  
    initial begin
       getEurofromDollar test1 = new(100);
      getDollarfromEuro test2 = new(20);
@@ -136,8 +129,6 @@ module exchange_module;
      getDollarfromWon test4 = new(20);
      getYenfromDollar test5 = new(13000);
      getDollarfromYen test6 = new(150000);
-      
-     
 
    end
 
