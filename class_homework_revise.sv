@@ -4,18 +4,18 @@ module exchange_module;
    parameter real Won_Rate = 1335.9;
    parameter real Yen_Rate = 148.29;
 
-   class GetFrom;
+   class Exchange;
      real amount;          //환전 '전' 화폐 '액수'
      string from;          //환전 '전' 화폐 '이름'
-     real get_money;       //환전 '후' 화폐 '액수'
+     real after_amount;       //환전 '후' 화폐 '액수'
      string get;           //환전 '후' 화폐 '이름'
 
      function new (real amount);
         this.amount = amount;	//환전 전 액수
      endfunction
      
-     function GetMoney(real get_money);
-       this.get_money = get_money;		//환전 후 액수
+     function AfterExchange(real after_amount);
+       this.after_amount = after_amount;		//환전 후 액수
      endfunction
      
      function Name(string get, string from);
@@ -24,22 +24,22 @@ module exchange_module;
      endfunction
      
      function display();
-         $display("%s : %f\n%s : %f\n", from, this.amount, this.get, this.get_money);
+         $display("%s : %f\n%s : %f\n", from, this.amount, this.get, this.after_amount);
      endfunction
    endclass
 
   
   
-   class gEfD extends GetFrom;      //달러에서 유로로 환전
+   class getEurofromDollar extends Exchange;      //달러에서 유로로 환전
      
       string from = "Dollar";
       string get = "Euro";
-      real get_money;
+      real after_amount;
 
      function new(real amount);
        super.new(amount); 
-       this.get_money =  amount * Euro_Rate;
-       super.GetMoney( get_money);
+       this.after_amount =  amount * Euro_Rate;
+       super.AfterExchange( after_amount);
        super.Name(get,from);
        
        super.display();
@@ -48,16 +48,16 @@ module exchange_module;
    endclass
 
 
-   class gDfE extends GetFrom;         //유로에서 달러로 환전
+   class getDollarfromEuro extends Exchange;         //유로에서 달러로 환전
 
       string from = "Euro";
       string get = "Dollar";
-      real get_money;
+      real after_amount;
 
      function new(real amount);
        super.new(amount); 
-       this.get_money = amount / Euro_Rate;
-       super.GetMoney( get_money);
+       this.after_amount = amount / Euro_Rate;
+       super.AfterExchange( after_amount);
        super.Name(get,from);
        
        super.display();
@@ -66,16 +66,16 @@ module exchange_module;
 
 
 
-   class gWfD extends GetFrom;
+   class getWonfromDollar extends Exchange;
 
       string from = "Dollar";
       string get = "Won";
-     real get_money;
+     real after_amount;
 
      function new(real amount);
        super.new(amount); 
-       this.get_money = amount * Won_Rate;
-       super.GetMoney( get_money);
+       this.after_amount = amount * Won_Rate;
+       super.AfterExchange( after_amount);
        super.Name(get,from);
        
        super.display();
@@ -83,33 +83,33 @@ module exchange_module;
    endclass
 
   
-   class gDfW extends GetFrom;
+   class getDollarfromWon extends Exchange;
 
       string from = "Won";
       string get = "Dollar";
-     real get_money;
+     real after_amount;
 
       function new(real amount);
        super.new(amount); 
-       this.get_money = amount / Won_Rate;
-       super.GetMoney( get_money);
+       this.after_amount = amount / Won_Rate;
+       super.AfterExchange( after_amount);
        super.Name(get,from);
        
        super.display();
      endfunction
    endclass
 
-   class gYfD extends GetFrom;
+   class getYenfromDollar extends Exchange;
 
       string from = "Dollar";
       string get = "Yen";
-     real get_money;
+     real after_amount;
      
 
      function new(real amount);
        super.new(amount); 
-       this.get_money = amount * Yen_Rate;
-       super.GetMoney( get_money);
+       this.after_amount = amount * Yen_Rate;
+       super.AfterExchange( after_amount);
        super.Name(get,from);
        
        super.display();
@@ -117,16 +117,16 @@ module exchange_module;
    endclass
 
 
-   class gDfY extends GetFrom;
+   class getDollarfromYen extends Exchange;
 
       string from = "Yen";
       string get = "Dollar";
-     real get_money;
+     real after_amount;
 
      function new(real amount);
        super.new(amount); 
-       this.get_money = amount / Yen_Rate;
-       super.GetMoney( get_money);
+       this.after_amount = amount / Yen_Rate;
+       super.AfterExchange( after_amount);
        super.Name(get,from);
        
        super.display();
@@ -136,12 +136,12 @@ module exchange_module;
 
   
    initial begin
-      gEfD test1 = new(100);
-     gDfE test2 = new(20);
-      gWfD test3 = new(100);
-     gDfW test4 = new(20);
-     gYfD test5 = new(13000);
-     gDfY test6 = new(150000);
+      getEurofromDollar test1 = new(100);
+     getDollarfromEuro test2 = new(20);
+      getWonfromDollar test3 = new(100);
+     getDollarfromWon test4 = new(20);
+     getYenfromDollar test5 = new(13000);
+     getDollarfromYen test6 = new(150000);
       
      
 
